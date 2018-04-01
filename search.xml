@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[编程书籍]]></title>
+    <url>%2F2018%2F03%2F30%2F%E7%BC%96%E7%A8%8B%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90%2F</url>
+    <content type="text"><![CDATA[Web CSS JavaScript PHP Linux Web 关于浏览器和网络的 20 项须知 浏览器开发工具的秘密 Chrome 开发者工具中文手册 Chrome扩展开发文档 Grunt中文文档 gulp中文文档 Gulp 入门指南 移动Web前端知识库 正则表达式30分钟入门教程 前端开发体系建设日记 移动前端开发收藏夹 JSON风格指南 HTTP 接口设计指北 前端资源分享（一） 前端资源分享（二） 前端代码规范 及 最佳实践 前端开发者手册 前端工程师手册 w3school教程整理 Wireshark用户手册 一站式学习Wireshark HTTP 下午茶 HTTP/2.0 中文翻译 RFC 7540 - HTTP/2 中文翻译版 http2讲解 3 Web Designs in 3 Weeks 站点可靠性工程 CSS 学习CSS布局 通用 CSS 笔记、建议与指导 CSS参考手册 Emmet 文档 前端代码规范 (腾讯 AlloyTeam 团队) HTML和CSS编码规范 Sass Guidelines 中文 CSS3 Tutorial 《CSS3 教程》 MDN HTML 中文文档 MDN CSS 中文文档 JavaScript JavaScript DOM编程艺术 JavaScript高级程序设计 JavaScript权威指南 Google JavaScript 代码风格指南 Google JSON 风格指南 Airbnb JavaScript 规范 JavaScript 标准参考教程（alpha） Javascript编程指南 (源码) javascript 的 12 个怪癖 JavaScript 秘密花园 JavaScript核心概念及实践 (PDF) (此书已由人民邮电出版社出版发行，但作者依然免费提供PDF版本，希望开发者们去购买，支持作者) 《JavaScript 模式》 “JavaScript patterns”中译本 命名函数表达式探秘 学用 JavaScript 设计模式 (开源中国) 深入理解JavaScript系列 ECMAScript 5.1 中文版 ECMAScript 6 入门 (作者：阮一峰) JavaScript Promise迷你书 You-Dont-Know-JS (深入JavaScript语言核心机制的系列图书) JavaScript 教程 廖雪峰 MDN JavaScript 中文文档 jQuery jQuery 解构 简单易懂的JQuery魔法 How to write jQuery plugin You Don’t Need jQuery 如何实现一个类jQuery？ Node.js Node入门 七天学会NodeJS Nodejs Wiki Book (繁体中文) express.js 中文文档 koa 中文文档 一起学koa 使用 Express + MongoDB 搭建多人博客 Express框架 Node.js 包教不包会 Learn You The Node.js For Much Win! (中文版) Node debug 三法三例 nodejs中文文档 orm2 中文文档 underscore.js Underscore.js中文文档 backbone.js backbone.js中文文档 backbone.js入门教程 (PDF) Backbone.js入门教程第二版 Developing Backbone.js Applications(中文版) AngularJS AngularJS最佳实践和风格指南 AngularJS中译本 AngularJS入门教程 构建自己的AngularJS 在Windows环境下用Yeoman构建AngularJS项目 Zepto.js Zepto.js 中文文档 Sea.js Hello Sea.js React.js React.js 中文文档 React webpack-cookbook React 入门教程 React Native 中文文档(含最新Android内容) Learn React &amp; Webpack by building the Hacker News front page impress.js impress.js的中文教程 CoffeeScript CoffeeScript Cookbook The Little Book on CoffeeScript中文版 CoffeeScript 编码风格指南 TypeScipt TypeScript Handbook ExtJS Ext4.1.0 中文文档 Meteor Discover Meteor Meteor 中文文档 Angular-Meteor 中文教程 Chrome扩展及应用开发 PHP PHP 官方手册 PHP调试技术手册(PDF) PHP之道：php-the-right-way (@wulijun版 PHPHub版) PHP 最佳实践 PHP 开发者实践 深入理解PHP内核 PHP扩展开发及内核应用 Laravel5.1 中文文档 Laravel 5.1 LTS 速查表 Symfony2 Cookbook 中文版(版本 2.7.0 LTS) Symfony2中文文档 (未译完) YiiBook几本Yii框架的在线教程 深入理解 Yii 2.0 Yii 框架中文文檔 简单易懂的PHP魔法 swoole文档及入门教程 Composer 中文网 Slim 中文文档 Lumen 中文文档 PHPUnit 中文文档 Linux 鸟哥的Linux私房菜]]></content>
+      <categories>
+        <category>书籍</category>
+      </categories>
+      <tags>
+        <tag>书籍</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux常用操作]]></title>
+    <url>%2F2018%2F03%2F30%2FLinux%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[Linux常用操作最近做项目迁移经常接触CentOS，下面就把常用的Linux操作记录一下，以便查询 1、cd命令用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径123cd /home/abc # 切换到目录/home/abccd ./path # 切换到当前目录下的path目录中，“.”表示当前目录 cd ../path # 切换到上层目录中的path目录中，“..”表示上一层目录 2、ls命令用于查看文件与目录的命令1/home/abc ls #查看/home/abc目录下的文件 3、grep命令用于分析一行的信息，若当中有我们所需要的信息，就将该行显示出来1rpm- qa | grep mysql #是指不区分大小写的列出含mysql字符的已经安装的rpm包软件 4、find命令用于查找的功能find [PATH] [option] [action]12find / -name abc # 查找文件名为abc的文件 find . -perm 0755 # 查找当前目录中文件权限的0755的文件 5、cp命令用于复制文件，它还可以把多个文件一次性地复制到一个目录下1cp -R /home/abc/httpd.conf /etc/conf 将/home/abc/httpd.conf文件复制到/etc/conf目录下 6、mv命令用于移动文件、目录或更名12mv file1 file2 file3 /etc/conf # 把文件file1、file2、file3移动到目录/etc/conf中 mv file1 file2 # 把文件file1重命名为file2 7、vim命令用于文本编辑，它接一个或多个文件名作为参数，如果文件存在就打开，如果文件不存在就以该文件名创建一个文件1vim /etc/conf/abc.txt # 把文件/etc/conf/abc.txt打开编辑，如果文件不存在就以该文件名创建一个文件并打开编辑 8、yum命令用于查找、安装、删除某一个、一组甚至全部软件包的命令yum [options] [command] [package …]12yum install pam-devel #安装 pam-develyum remove pam-devel #移除 pam-devel 9、rm命令用于删除某一个文件或文件夹12rm -rf /var/log/httpd/access #删除/var/log/httpd/access目录以及其下所有文件、文件夹rm -f /var/log/httpd/access.log #将会强制删除/var/log/httpd/access.log这个文件]]></content>
+      <categories>
+        <category>技术分享</category>
+      </categories>
+      <tags>
+        <tag>技术分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F03%2F29%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
