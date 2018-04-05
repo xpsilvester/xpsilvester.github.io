@@ -89,7 +89,8 @@
 <meta property="og:description" content="CentOS 6.6上部署asp.net MVC项目详细过程 一、首先更新系统1[root@localhost ~]# yum –y update 二、安装Mono1.安装Mono源码安装需要的组件：1[root@localhost ~]# yum -y install wget glib2-devel libtiff libtiff-devel libjpeg libjpeg-devel gif">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://s2.51cto.com/wyfs02/M01/76/35/wKioL1ZNJ2KjFX0aAACMLehqRlw136.png-wh_600x-s_2117650469.png">
-<meta property="og:updated_time" content="2018-04-05T03:39:38.140Z">
+<meta property="og:image" content="http://7xio93.com1.z0.glb.clouddn.com/mysql-list.png">
+<meta property="og:updated_time" content="2018-04-05T03:53:49.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 6.6上部署asp.net MVC项目详细过程">
 <meta name="twitter:description" content="CentOS 6.6上部署asp.net MVC项目详细过程 一、首先更新系统1[root@localhost ~]# yum –y update 二、安装Mono1.安装Mono源码安装需要的组件：1[root@localhost ~]# yum -y install wget glib2-devel libtiff libtiff-devel libjpeg libjpeg-devel gif">
@@ -431,7 +432,7 @@
 <p>终端浏览器输入网址<a href="http://ip:port/index.html访问网站：" target="_blank" rel="noopener">http://ip:port/index.html访问网站：</a><br><img src="http://s2.51cto.com/wyfs02/M01/76/35/wKioL1ZNJ2KjFX0aAACMLehqRlw136.png-wh_600x-s_2117650469.png" alt="此处输入图片的描述"></p>
 <h4 id="五、数据库"><a href="#五、数据库" class="headerlink" title="五、数据库"></a>五、数据库</h4><h5 id="1-卸载centos6-5本身所安装的mysql："><a href="#1-卸载centos6-5本身所安装的mysql：" class="headerlink" title="1.卸载centos6.5本身所安装的mysql："></a>1.卸载centos6.5本身所安装的mysql：</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[root@localhost]#</span> yum remove  mysql mysql-server mysql-libs mysql-server</span><br><span class="line"><span class="meta">[root@localhost]#</span> find / -name mysql #将找到的都删掉 rm -fr </span><br><span class="line"><span class="meta">[root@localhost]#</span> rpm -qa|grep -i mysql #查看还有么没有mysql，如果有的话，使用rpm -e –nodeps 包名 删除</span><br></pre></td></tr></table></figure>
 <h5 id="2-安装mysql"><a href="#2-安装mysql" class="headerlink" title="2.安装mysql"></a>2.安装mysql</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# yum list mysql-server</span><br></pre></td></tr></table></figure>
-<p>如果显示列表，则说明成功了<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# yum install mysql-server</span><br></pre></td></tr></table></figure></p>
+<p>如果显示列表，则说明成功了<br><img src="http://7xio93.com1.z0.glb.clouddn.com/mysql-list.png" alt="此处输入图片的描述"><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# yum install mysql-server</span><br></pre></td></tr></table></figure></p>
 <p>过程中选择Y继续安装，最后安装成功</p>
 <h5 id="3-设置Mysql的服务"><a href="#3-设置Mysql的服务" class="headerlink" title="3.设置Mysql的服务"></a>3.设置Mysql的服务</h5><p>先启动Mysql服务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# service mysqld start</span><br></pre></td></tr></table></figure></p>
 <p>设置Mysql开机启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# chkconfig mysqld on</span><br></pre></td></tr></table></figure></p>
