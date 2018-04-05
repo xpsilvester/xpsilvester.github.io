@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="CentOS 7上部署asp.net MVC项目详细过程 一、Mysql安装：之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了 1.删除原来的MariaDB、重装12[root@localhost ~]# yum remove mariadb[root@localhost ~]# yum -y install mariadb 2.启动MariaDB1[r">
+<meta name="description" content="一、Mysql安装：之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了 1.删除原来的MariaDB、重装12[root@localhost ~]# yum remove mariadb[root@localhost ~]# yum -y install mariadb 2.启动MariaDB1[root@localhost ~]# systemctl s">
 <meta name="keywords" content="技术分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 7上部署asp.net MVC项目详细过程">
 <meta property="og:url" content="https://www.xpsilvester.com/2018/04/05/CentOS 7上部署asp.net MVC项目详细过程/index.html">
 <meta property="og:site_name" content="xpsilvester">
-<meta property="og:description" content="CentOS 7上部署asp.net MVC项目详细过程 一、Mysql安装：之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了 1.删除原来的MariaDB、重装12[root@localhost ~]# yum remove mariadb[root@localhost ~]# yum -y install mariadb 2.启动MariaDB1[r">
+<meta property="og:description" content="一、Mysql安装：之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了 1.删除原来的MariaDB、重装12[root@localhost ~]# yum remove mariadb[root@localhost ~]# yum -y install mariadb 2.启动MariaDB1[root@localhost ~]# systemctl s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-05T03:30:45.222Z">
+<meta property="og:updated_time" content="2018-04-05T03:57:57.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7上部署asp.net MVC项目详细过程">
-<meta name="twitter:description" content="CentOS 7上部署asp.net MVC项目详细过程 一、Mysql安装：之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了 1.删除原来的MariaDB、重装12[root@localhost ~]# yum remove mariadb[root@localhost ~]# yum -y install mariadb 2.启动MariaDB1[r">
+<meta name="twitter:description" content="一、Mysql安装：之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了 1.删除原来的MariaDB、重装12[root@localhost ~]# yum remove mariadb[root@localhost ~]# yum -y install mariadb 2.启动MariaDB1[root@localhost ~]# systemctl s">
 
 
 
@@ -397,8 +397,7 @@
       
 
       
-        <h1 id="CentOS-7上部署asp-net-MVC项目详细过程"><a href="#CentOS-7上部署asp-net-MVC项目详细过程" class="headerlink" title="CentOS 7上部署asp.net MVC项目详细过程"></a>CentOS 7上部署asp.net MVC项目详细过程</h1><hr>
-<h3 id="一、Mysql安装："><a href="#一、Mysql安装：" class="headerlink" title="一、Mysql安装："></a>一、Mysql安装：</h3><p>之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了</p>
+        <h3 id="一、Mysql安装："><a href="#一、Mysql安装：" class="headerlink" title="一、Mysql安装："></a>一、Mysql安装：</h3><p>之前在CentOS 7上安装Mysql一直装不上，查了一下才知道已经改用MariaDB代替了</p>
 <h4 id="1-删除原来的MariaDB、重装"><a href="#1-删除原来的MariaDB、重装" class="headerlink" title="1.删除原来的MariaDB、重装"></a>1.删除原来的MariaDB、重装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum remove mariadb</span><br><span class="line">[root@localhost ~]# yum -y install mariadb</span><br></pre></td></tr></table></figure>
 <h4 id="2-启动MariaDB"><a href="#2-启动MariaDB" class="headerlink" title="2.启动MariaDB"></a>2.启动MariaDB</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl start mariadb.service</span><br></pre></td></tr></table></figure>
 <p>如果没问题说明已经安装成功，本人到这步的时候数据库启动报错（成功请忽略，直接跳到下一步），</p>
@@ -605,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS-7上部署asp-net-MVC项目详细过程"><span class="nav-number">1.</span> <span class="nav-text">CentOS 7上部署asp.net MVC项目详细过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Mysql安装："><span class="nav-number">1.0.1.</span> <span class="nav-text">一、Mysql安装：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-删除原来的MariaDB、重装"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1.删除原来的MariaDB、重装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动MariaDB"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">2.启动MariaDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-查看启动状态"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">2.1 查看启动状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-登陆"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">3.登陆</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Jexus和Mono的安装配置可参照"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、Jexus和Mono的安装配置可参照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、一些常见问题及操作"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、一些常见问题及操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Jexus-大小写敏感解决："><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1.Jexus 大小写敏感解决：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Centos7-下mysql大小写敏感"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2.Centos7 下mysql大小写敏感:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-防火墙设置"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3.防火墙设置</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Mysql安装："><span class="nav-number">1.</span> <span class="nav-text">一、Mysql安装：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-删除原来的MariaDB、重装"><span class="nav-number">1.1.</span> <span class="nav-text">1.删除原来的MariaDB、重装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动MariaDB"><span class="nav-number">1.2.</span> <span class="nav-text">2.启动MariaDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-查看启动状态"><span class="nav-number">1.3.</span> <span class="nav-text">2.1 查看启动状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-登陆"><span class="nav-number">1.4.</span> <span class="nav-text">3.登陆</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Jexus和Mono的安装配置可参照"><span class="nav-number">2.</span> <span class="nav-text">二、Jexus和Mono的安装配置可参照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、一些常见问题及操作"><span class="nav-number">3.</span> <span class="nav-text">三、一些常见问题及操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Jexus-大小写敏感解决："><span class="nav-number">3.1.</span> <span class="nav-text">1.Jexus 大小写敏感解决：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Centos7-下mysql大小写敏感"><span class="nav-number">3.2.</span> <span class="nav-text">2.Centos7 下mysql大小写敏感:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-防火墙设置"><span class="nav-number">3.3.</span> <span class="nav-text">3.防火墙设置</span></a></li></ol></li></ol></div>
             
 
           </div>
