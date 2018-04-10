@@ -95,13 +95,13 @@
 <meta property="og:site_name" content="xpsilvester">
 <meta property="og:description" content="一、首先更新系统1[root@localhost ~]# yum –y update 二、安装Mono1.安装Mono源码安装需要的组件：1[root@localhost ~]# yum -y install wget glib2-devel libtiff libtiff-devel libjpeg libjpeg-devel giflib giflib-devel libpng libpng-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://s2.51cto.com/wyfs02/M01/76/35/wKioL1ZNJ2KjFX0aAACMLehqRlw136.png-wh_600x-s_2117650469.png">
-<meta property="og:image" content="http://7xio93.com1.z0.glb.clouddn.com/mysql-list.png">
-<meta property="og:updated_time" content="2018-04-05T03:58:09.875Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/xpsilvester/Project/master/images/asp.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xpsilvester/Project/master/images/mysql-list.png">
+<meta property="og:updated_time" content="2018-04-10T14:10:39.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 6.6上部署asp.net MVC项目详细过程">
 <meta name="twitter:description" content="一、首先更新系统1[root@localhost ~]# yum –y update 二、安装Mono1.安装Mono源码安装需要的组件：1[root@localhost ~]# yum -y install wget glib2-devel libtiff libtiff-devel libjpeg libjpeg-devel giflib giflib-devel libpng libpng-">
-<meta name="twitter:image" content="http://s2.51cto.com/wyfs02/M01/76/35/wKioL1ZNJ2KjFX0aAACMLehqRlw136.png-wh_600x-s_2117650469.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xpsilvester/Project/master/images/asp.png">
 
 
 
@@ -393,6 +393,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/05/CentOS 6.6上部署asp.net MVC项目详细过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/05/CentOS 6.6上部署asp.net MVC项目详细过程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -450,10 +460,10 @@
 <p>开放防火墙80端口：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost siteconf]# vi /etc/sysconfig/iptables </span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> Firewall configuration written by system-config-firewall </span><br><span class="line"><span class="meta">#</span> Manual customization of this file is not recommended. </span><br><span class="line">*filter </span><br><span class="line">:INPUT ACCEPT [0:0] </span><br><span class="line">:FORWARD ACCEPT [0:0] </span><br><span class="line">:OUTPUT ACCEPT [0:0] </span><br><span class="line">-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT </span><br><span class="line">-A INPUT -p icmp -j ACCEPT </span><br><span class="line">-A INPUT -i lo -j ACCEPT </span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT </span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT </span><br><span class="line">-A INPUT -j REJECT --reject-with icmp-host-prohibited </span><br><span class="line">-A FORWARD -j REJECT --reject-with icmp-host-prohibited </span><br><span class="line">COMMIT</span><br></pre></td></tr></table></figure></p>
 <p>重启iptables，使防火墙设置生效：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost siteconf]# /etc/init.d/iptables restart</span><br></pre></td></tr></table></figure></p>
 <p>重启Jexus服务：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost siteconf]# /usr/apollo/hostd/jexus/jws restart</span><br></pre></td></tr></table></figure></p>
-<p>终端浏览器输入网址<a href="http://ip:port/index.html访问网站：" target="_blank" rel="noopener">http://ip:port/index.html访问网站：</a><br><img src="http://s2.51cto.com/wyfs02/M01/76/35/wKioL1ZNJ2KjFX0aAACMLehqRlw136.png-wh_600x-s_2117650469.png" alt="此处输入图片的描述"></p>
+<p>终端浏览器输入网址<a href="http://ip:port/index.html访问网站：" target="_blank" rel="noopener">http://ip:port/index.html访问网站：</a><br><img src="https://raw.githubusercontent.com/xpsilvester/Project/master/images/asp.png" alt="此处输入图片的描述"></p>
 <h4 id="五、数据库"><a href="#五、数据库" class="headerlink" title="五、数据库"></a>五、数据库</h4><h5 id="1-卸载centos6-5本身所安装的mysql："><a href="#1-卸载centos6-5本身所安装的mysql：" class="headerlink" title="1.卸载centos6.5本身所安装的mysql："></a>1.卸载centos6.5本身所安装的mysql：</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[root@localhost]#</span> yum remove  mysql mysql-server mysql-libs mysql-server</span><br><span class="line"><span class="meta">[root@localhost]#</span> find / -name mysql #将找到的都删掉 rm -fr </span><br><span class="line"><span class="meta">[root@localhost]#</span> rpm -qa|grep -i mysql #查看还有么没有mysql，如果有的话，使用rpm -e –nodeps 包名 删除</span><br></pre></td></tr></table></figure>
 <h5 id="2-安装mysql"><a href="#2-安装mysql" class="headerlink" title="2.安装mysql"></a>2.安装mysql</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# yum list mysql-server</span><br></pre></td></tr></table></figure>
-<p>如果显示列表，则说明成功了<br><img src="http://7xio93.com1.z0.glb.clouddn.com/mysql-list.png" alt="此处输入图片的描述"><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# yum install mysql-server</span><br></pre></td></tr></table></figure></p>
+<p>如果显示列表，则说明成功了<br><img src="https://raw.githubusercontent.com/xpsilvester/Project/master/images/mysql-list.png" alt="此处输入图片的描述"><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# yum install mysql-server</span><br></pre></td></tr></table></figure></p>
 <p>过程中选择Y继续安装，最后安装成功</p>
 <h5 id="3-设置Mysql的服务"><a href="#3-设置Mysql的服务" class="headerlink" title="3.设置Mysql的服务"></a>3.设置Mysql的服务</h5><p>先启动Mysql服务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# service mysqld start</span><br></pre></td></tr></table></figure></p>
 <p>设置Mysql开机启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# chkconfig mysqld on</span><br></pre></td></tr></table></figure></p>
@@ -532,6 +542,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -870,6 +883,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'dcStXgJ400h0ziWkaV8Aha90-gzGzoHsz',
+        appKey: 'v5V7qkqEtJHd8p69lh0k3zTM',
+        placeholder: '请开始你的表演吧！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
