@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="baidu-site-verification" content="QwtJMkR28u" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="技术分享," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.初级算法-线性查找-时间复杂度O(n) 2.二分查找(又称折半查找) - 适用于已排好序的线性结构 - 时间复杂度O(logN) 3.冒泡排序 – 时间复杂度O(n^2) 4.选择排序 – 时间复杂度O(n^2) 5.插入算法 – 时间复杂度O(n^2) 6.字符串反转 – 时间复杂度O(logN) 7.一个基于对象的单链表 8.用数组实现的队列：利用数组中的push和shift方法可以使队列">
+<meta name="keywords" content="技术分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript常用算法">
+<meta property="og:url" content="https://www.xpsilvester.com/2018/04/14/JsAlgorithm/index.html">
+<meta property="og:site_name" content="xpsilvester">
+<meta property="og:description" content="1.初级算法-线性查找-时间复杂度O(n) 2.二分查找(又称折半查找) - 适用于已排好序的线性结构 - 时间复杂度O(logN) 3.冒泡排序 – 时间复杂度O(n^2) 4.选择排序 – 时间复杂度O(n^2) 5.插入算法 – 时间复杂度O(n^2) 6.字符串反转 – 时间复杂度O(logN) 7.一个基于对象的单链表 8.用数组实现的队列：利用数组中的push和shift方法可以使队列">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-14T09:14:16.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript常用算法">
+<meta name="twitter:description" content="1.初级算法-线性查找-时间复杂度O(n) 2.二分查找(又称折半查找) - 适用于已排好序的线性结构 - 时间复杂度O(logN) 3.冒泡排序 – 时间复杂度O(n^2) 4.选择排序 – 时间复杂度O(n^2) 5.插入算法 – 时间复杂度O(n^2) 6.字符串反转 – 时间复杂度O(logN) 7.一个基于对象的单链表 8.用数组实现的队列：利用数组中的push和shift方法可以使队列">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.xpsilvester.com/2018/04/14/JsAlgorithm/"/>
+
+
+
+
+
+  <title>JavaScript常用算法 | xpsilvester</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1978852ce258cbad987d7f47fc84e99b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xpsilvester</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-技术分享">
+          <a href="/categories/技术分享" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-share"></i> <br />
+            
+            技术分享
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-书籍">
+          <a href="/categories/书籍" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书籍
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-存档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            存档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言">
+          <a href="/message" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comment"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.xpsilvester.com/2018/04/14/JsAlgorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xpsilvester">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xpsilvester">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript常用算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T17:11:50+08:00">
+                2018-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/14/JsAlgorithm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/14/JsAlgorithm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="#初级算法">1.初级算法-线性查找-时间复杂度O(n)</a></p>
+<p><a href="#二分查找">2.二分查找(又称折半查找) - 适用于已排好序的线性结构 - 时间复杂度O(logN)</a></p>
+<p><a href="#冒泡排序">3.冒泡排序 – 时间复杂度O(n^2)</a></p>
+<p><a href="#选择排序">4.选择排序 – 时间复杂度O(n^2)</a></p>
+<p><a href="#插入算法">5.插入算法 – 时间复杂度O(n^2)</a></p>
+<p><a href="#字符串反转">6.字符串反转 – 时间复杂度O(logN)</a></p>
+<p><a href="#一个基于对象的单链表">7.一个基于对象的单链表</a></p>
+<p><a href="#用数组实现的队列">8.用数组实现的队列：利用数组中的push和shift方法可以使队列的实现显得非常简单、从定义一个Queue构造函数开始实现队列</a></p>
+<p><a href="#栈的实现">9.栈的实现</a></p>
+<p><a href="#快速排序">10.快速排序 – 平均时间复杂度O(nlog2n)</a></p>
+<h2 id="初级算法"><a href="#初级算法" class="headerlink" title="初级算法"></a>初级算法</h2><h3 id="线性查找-时间复杂度O-n-–相当于算法界中的HelloWorld"><a href="#线性查找-时间复杂度O-n-–相当于算法界中的HelloWorld" class="headerlink" title="线性查找-时间复杂度O(n)–相当于算法界中的HelloWorld"></a>线性查找-时间复杂度O(n)–相当于算法界中的HelloWorld</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">9</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//线性搜索</span></span><br><span class="line"><span class="comment">//A为数组，x为要搜索的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearSearch</span>(<span class="params">A,x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;A.length;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(A[i]==x)&#123;</span><br><span class="line">			<span class="keyword">return</span> i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.write(linearSearch(arr,<span class="number">10</span>)+<span class="string">"&lt;/br&gt;"</span>);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h3 id="又称折半查找-适用于已排好序的线性结构-时间复杂度O-logN"><a href="#又称折半查找-适用于已排好序的线性结构-时间复杂度O-logN" class="headerlink" title="(又称折半查找) - 适用于已排好序的线性结构 - 时间复杂度O(logN)"></a>(又称折半查找) - 适用于已排好序的线性结构 - 时间复杂度O(logN)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二分搜索</span></span><br><span class="line"><span class="comment">//A为已按"升序排列"的数组，x为要查询的元素</span></span><br><span class="line"><span class="comment">//返回目标元素的下标</span></span><br><span class="line"><span class="keyword">var</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">19</span>,<span class="number">25</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">A, x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> low = <span class="number">0</span>, high = A.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">		<span class="keyword">var</span> mid=<span class="built_in">Math</span>.floor((low+high)/<span class="number">2</span>);<span class="comment">//下取整</span></span><br><span class="line">		<span class="keyword">if</span>(A[mid]==x)&#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(A[mid]&gt;x)&#123;</span><br><span class="line">			high=mid<span class="number">-1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			low=mid+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.write(binarySearch(arr1,<span class="number">19</span>)+<span class="string">"&lt;/br&gt;"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><h3 id="时间复杂度O-n-2"><a href="#时间复杂度O-n-2" class="headerlink" title="时间复杂度O(n^2)"></a>时间复杂度O(n^2)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">9</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//第一种</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">A</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> i,j,flag,temp;</span><br><span class="line">	<span class="keyword">for</span>(i=A.length<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">		flag=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(A[j<span class="number">-1</span>]&gt;A[j])&#123;</span><br><span class="line">				temp=A[j];</span><br><span class="line">				A[j]=A[j<span class="number">-1</span>];</span><br><span class="line">				A[j<span class="number">-1</span>]=temp;</span><br><span class="line">				flag=<span class="number">1</span>;</span><br><span class="line">			&#125;		</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag==<span class="number">0</span>)</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">第二种</span></span><br><span class="line"><span class="comment">function bubbleSort(A) &#123;</span></span><br><span class="line"><span class="comment">  for (var i = 0; i &lt; A.length; i++) &#123;</span></span><br><span class="line"><span class="comment">    var sorted = true;</span></span><br><span class="line"><span class="comment">  //注意：内循环是倒着来的</span></span><br><span class="line"><span class="comment">    for (var j = A.length - 1; j &gt; i; j--) &#123;</span></span><br><span class="line"><span class="comment">      if (A[j] &lt; A[j - 1]) &#123;</span></span><br><span class="line"><span class="comment">        var temp=A[j];</span></span><br><span class="line"><span class="comment">        A[j]=A[j-1];</span></span><br><span class="line"><span class="comment">        A[j-1]=temp;</span></span><br><span class="line"><span class="comment">        sorted = false;</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    if (sorted) &#123;</span></span><br><span class="line"><span class="comment">      return;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">第三种（推荐:容易写，不容易出错）</span></span><br><span class="line"><span class="comment">function bubbleSort(arr)&#123;</span></span><br><span class="line"><span class="comment">	var flag=0;</span></span><br><span class="line"><span class="comment">	do&#123;</span></span><br><span class="line"><span class="comment">		flag=1;</span></span><br><span class="line"><span class="comment">		for(var i=0 ; i&lt;arr.length;i++)&#123;</span></span><br><span class="line"><span class="comment">			if(arr[i]&gt;arr[i+1])&#123;</span></span><br><span class="line"><span class="comment">				var temp=arr[i];</span></span><br><span class="line"><span class="comment">				arr[i]=arr[i+1];</span></span><br><span class="line"><span class="comment">				arr[i+1]=temp;</span></span><br><span class="line"><span class="comment">				flag=0;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	while(flag==0)</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">bubbleSort(arr2);</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><h3 id="时间复杂度O-n-2-1"><a href="#时间复杂度O-n-2-1" class="headerlink" title="时间复杂度O(n^2)"></a>时间复杂度O(n^2)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//思路：找到最小值的下标记下来，再交换</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">A</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;A.length;i++)&#123;</span><br><span class="line">		<span class="keyword">var</span> k=i;</span><br><span class="line">		<span class="comment">//这个是算法的关键，它从无序序列中挑出一个最小的元素</span></span><br><span class="line">		<span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;A.length;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(A[k]&gt;A[j])</span><br><span class="line">				k=j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//下面3句完成最小元素与无序序列第一个元素的交换</span></span><br><span class="line">		<span class="keyword">var</span> temp=A[i];</span><br><span class="line">		A[i]=A[k];</span><br><span class="line">		A[k]=temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr3=[<span class="number">14</span>,<span class="number">35</span>,<span class="number">25</span>,<span class="number">12</span>,<span class="number">64</span>,<span class="number">33</span>];</span><br><span class="line">selectionSort(arr3);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;/br&gt;"</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr3.length;i++)</span><br><span class="line"><span class="built_in">document</span>.write(arr3[i]+<span class="string">","</span>);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;/br&gt;"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="插入算法"><a href="#插入算法" class="headerlink" title="插入算法"></a>插入算法</h2><h3 id="时间复杂度O-n-2-2"><a href="#时间复杂度O-n-2-2" class="headerlink" title="时间复杂度O(n^2)"></a>时间复杂度O(n^2)</h3><p>   假定当前元素之前的元素已经排好序，先把自己的位置空出来，然后前面比自己大的元素依次向后移，直到空出一个”坑”，然后把目标元素插入”坑”中每趟将一个待排序的元素作为关键字，按照其关键字值的大小插入到已经排好的部分序列的适当位置，直到插入完成</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">A</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;A.length;i++)&#123;<span class="comment">//数组从下标0开始存储，第一个元素有序，所以从第二个开始处理</span></span><br><span class="line">		<span class="keyword">var</span> temp=A[i];<span class="comment">//将待插入元素暂存于temp中</span></span><br><span class="line">		<span class="keyword">var</span> j=i<span class="number">-1</span>;</span><br><span class="line">		<span class="comment">//下面这个循环完成了从待排元素之前的元素开始扫描，如果大于待排元素，则后移一位</span></span><br><span class="line">		<span class="keyword">while</span>(j&gt;=<span class="number">1</span>&amp;&amp;temp&lt;A[j])&#123;</span><br><span class="line">			A[j+<span class="number">1</span>]=A[j];</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		A[j+<span class="number">1</span>]=temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">arr4=[<span class="number">45</span>,<span class="number">342</span>,<span class="number">45634</span>,<span class="number">664</span>,<span class="number">656</span>,<span class="number">34342</span>,<span class="number">46</span>,<span class="number">56</span>,<span class="number">544</span>];</span><br><span class="line">insertSort(arr4);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr4.length;i++)</span><br><span class="line"><span class="built_in">document</span>.write(arr4[i]+<span class="string">","</span>);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;/br&gt;"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="字符串反转"><a href="#字符串反转" class="headerlink" title="字符串反转"></a>字符串反转</h2><h3 id="时间复杂度O-logN"><a href="#时间复杂度O-logN" class="headerlink" title="时间复杂度O(logN)"></a>时间复杂度O(logN)</h3><p>字符串反转(比如：ABC -&gt; CBA) 可以直接用str.split(“”).reverse().join(“”)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">'ABC'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">s</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a=s.split(<span class="string">''</span>);<span class="comment">//把‘ABC’分成子串数组['A','B','C']</span></span><br><span class="line">	<span class="keyword">var</span> i=<span class="number">0</span>,j=a.length<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">		<span class="keyword">var</span> temp=a[i];</span><br><span class="line">		a[i]=a[j];</span><br><span class="line">		a[j]=temp;</span><br><span class="line">		i++;</span><br><span class="line">		j--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a.join(<span class="string">''</span>);<span class="comment">//把字符串重新组合</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> k=reverse(str);</span><br><span class="line"><span class="built_in">document</span>.write(k);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;/br&gt;"</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="设计一个基于对象的单链表"><a href="#设计一个基于对象的单链表" class="headerlink" title="设计一个基于对象的单链表"></a>设计一个基于对象的单链表</h2><h3 id="（双链表类似）"><a href="#（双链表类似）" class="headerlink" title="（双链表类似）"></a>（双链表类似）</h3><p>需要设计两个类，Node 类用来表示节点, LinkedList 类提供插入节点、删除节点、显示列表元素的方法,以及其他一些辅助方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Node类：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.data=element;<span class="comment">//当前节点的数据 </span></span><br><span class="line">	<span class="keyword">this</span>.next=<span class="literal">null</span>;<span class="comment">//下一个节点数据</span></span><br><span class="line">	<span class="comment">//this.previous = null;(双链表)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//LinkedList类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">LList</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.head=<span class="keyword">new</span> Node(<span class="string">"head"</span>);<span class="comment">//头节点 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//链表的操作</span></span><br><span class="line">LList.prototype=&#123;</span><br><span class="line">	<span class="comment">//查找某一节点</span></span><br><span class="line">	find:<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> currNode=<span class="keyword">this</span>.head;</span><br><span class="line">		<span class="keyword">while</span>(currNode.data!=item)&#123;</span><br><span class="line">			currNode=currNode.next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> currNode;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//向某一元素后面插入新节点</span></span><br><span class="line">	insert:<span class="function"><span class="keyword">function</span>(<span class="params">newElement,item</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> newNode=<span class="keyword">new</span> Node(newElement);</span><br><span class="line">		<span class="keyword">var</span> current=<span class="keyword">this</span>.find(item);</span><br><span class="line">		newNode.next=current.next;</span><br><span class="line">		current.next=newNode;</span><br><span class="line">		<span class="comment">//newNode.previous = current;(双链表)</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//查找某一节点的前一个节点(前驱)</span></span><br><span class="line">	findPrevious:<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> currNode=<span class="keyword">this</span>.head;</span><br><span class="line">		<span class="comment">//从头结点开始找，一直到当前结点的next==item是返回当前结点</span></span><br><span class="line">		<span class="keyword">while</span> (!(currNode.next == <span class="literal">null</span>) &amp;&amp;(currNode.next.element != item)) &#123;</span><br><span class="line">			currNode=currNode.next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> currNode;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//删除某一个节点</span></span><br><span class="line">	remove:<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> prevNode=<span class="keyword">this</span>.findPrevious(item);</span><br><span class="line">		<span class="keyword">if</span> (!(prevNode.next == <span class="literal">null</span>))&#123;</span><br><span class="line">			prevNode.next = prevNode.next.next; </span><br><span class="line">			<span class="comment">/*(双链表)</span></span><br><span class="line"><span class="comment">			currNode.previous.next = currNode.next;  </span></span><br><span class="line"><span class="comment">    		currNode.next.previous = currNode.previous;  </span></span><br><span class="line"><span class="comment">    		currNode.next = null;  </span></span><br><span class="line"><span class="comment">    		currNode.previous = null;  */</span></span><br><span class="line">		&#125;    </span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//修改某一节点的数据</span></span><br><span class="line">	edit:<span class="function"><span class="keyword">function</span>(<span class="params">item,newItem</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> curNode=<span class="keyword">this</span>.find(item);</span><br><span class="line">		curNode.data=newItem;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//在控制台打印出所有节点(为了方便预览)</span></span><br><span class="line">	print:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> currNode=<span class="keyword">this</span>.head;</span><br><span class="line">		<span class="keyword">while</span> (!(currNode.next == <span class="literal">null</span>))&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(currNode.next.data);    </span><br><span class="line">      		currNode = currNode.next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试链表</span></span><br><span class="line"><span class="comment">//新建链表</span></span><br><span class="line"><span class="keyword">var</span> names=<span class="keyword">new</span> LList();</span><br><span class="line">names.insert(<span class="string">"likek"</span>, <span class="string">"head"</span>);<span class="comment">//往头节点后插入节点likek  </span></span><br><span class="line">names.insert(<span class="string">"zhangsan"</span>, <span class="string">"likek"</span>);<span class="comment">//往likek后插入节点zhangsan  </span></span><br><span class="line">names.insert(<span class="string">"lisi"</span>, <span class="string">"zhangsan"</span>);<span class="comment">//往zhangsan后插入节点lisi  </span></span><br><span class="line">names.insert(<span class="string">"wangwu"</span>, <span class="string">"lisi"</span>);<span class="comment">//往lisi后插入节点wangwu  </span></span><br><span class="line">names.print(); </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"****************************"</span>);</span><br><span class="line"><span class="comment">//移除结点</span></span><br><span class="line">names.remove(<span class="string">"zhangsan"</span>);<span class="comment">//删除zhangsan节点</span></span><br><span class="line">names.print();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"****************************"</span>);</span><br><span class="line"><span class="comment">//更改结点</span></span><br><span class="line">names.edit(<span class="string">"lisi"</span>,<span class="string">"wangnima"</span>);<span class="comment">//将lisi节点改为wangnima</span></span><br><span class="line">names.print();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"****************************"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="用数组实现的队列"><a href="#用数组实现的队列" class="headerlink" title="用数组实现的队列"></a>用数组实现的队列</h2><h3 id="利用数组中的push和shift方法可以使队列的实现显得非常简单"><a href="#利用数组中的push和shift方法可以使队列的实现显得非常简单" class="headerlink" title="利用数组中的push和shift方法可以使队列的实现显得非常简单"></a>利用数组中的push和shift方法可以使队列的实现显得非常简单</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name1=[];</span><br><span class="line">name1.push(<span class="string">"wuxinpei"</span>);<span class="comment">//推入元素</span></span><br><span class="line">name1.push(<span class="string">"zhangjionghuan"</span>);</span><br><span class="line">name1.push(<span class="string">"suguojing"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(name1);<span class="comment">//输出数组</span></span><br><span class="line"><span class="built_in">console</span>.log(name1.join());<span class="comment">//输出字符串</span></span><br><span class="line">name1.shift();<span class="comment">//出队</span></span><br><span class="line"><span class="built_in">console</span>.log(name1.join());</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"****************************"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="从定义一个Queue构造函数开始实现队列"><a href="#从定义一个Queue构造函数开始实现队列" class="headerlink" title="从定义一个Queue构造函数开始实现队列"></a>从定义一个Queue构造函数开始实现队列</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Queue</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.dataStore=[];</span><br><span class="line">&#125;</span><br><span class="line">Queue.prototype=&#123;</span><br><span class="line">	enqueue:<span class="function"><span class="keyword">function</span>　(<span class="params">element</span>) </span>&#123;  </span><br><span class="line">　　　<span class="keyword">this</span>.dataStore.push(element);<span class="comment">//入队，加入新成员  </span></span><br><span class="line">　&#125;,  </span><br><span class="line">  dequeue:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.shift();<span class="comment">//删除并返回队首元素  </span></span><br><span class="line">  &#125;,  </span><br><span class="line">  front:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="number">0</span>];<span class="comment">//返回队首元素  </span></span><br><span class="line">  &#125;,  </span><br><span class="line">  back:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.dataStore.length<span class="number">-1</span>];<span class="comment">//返回队尾元素  </span></span><br><span class="line">  &#125;,  </span><br><span class="line">  toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.join();<span class="comment">//返回队列中所有元素  </span></span><br><span class="line">  &#125;,  </span><br><span class="line">  isempty:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="keyword">return</span> !<span class="keyword">this</span>.dataStore.length;<span class="comment">//判断队列是否为空  </span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试队列</span></span><br><span class="line"><span class="keyword">var</span> ui=<span class="keyword">new</span> Queue();  </span><br><span class="line">ui.enqueue(<span class="string">"same"</span>);  </span><br><span class="line">ui.enqueue(<span class="string">"哈哈"</span>);  </span><br><span class="line">ui.enqueue(<span class="number">26</span>);  </span><br><span class="line"><span class="built_in">console</span>.log(ui.toString());<span class="comment">//"likek,哈哈,18"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"****************************"</span>);  </span><br><span class="line"><span class="comment">/*ui.dequeue();//"likek"  </span></span><br><span class="line"><span class="comment">ui.toString();//"likek,哈哈"  </span></span><br><span class="line"><span class="comment">ui.isempty();//false  </span></span><br><span class="line"><span class="comment">ui.dequeue();ui.dequeue();  </span></span><br><span class="line"><span class="comment">ui.isempty();//true </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="栈的实现"><a href="#栈的实现" class="headerlink" title="栈的实现"></a>栈的实现</h2><h3 id="从定义一个stack构造函数开始"><a href="#从定义一个stack构造函数开始" class="headerlink" title="从定义一个stack构造函数开始"></a>从定义一个stack构造函数开始</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Stack</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">　<span class="keyword">this</span>.dataStore = [];<span class="comment">//保存栈内元素  </span></span><br><span class="line">　<span class="keyword">this</span>.top = <span class="number">0</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//对栈的各种操作 </span></span><br><span class="line">Stack.prototype=&#123;  </span><br><span class="line">   push:<span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">element</span>) </span>&#123;  </span><br><span class="line">          <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.top++] = element;<span class="comment">//添加一个元素并将top+1  </span></span><br><span class="line">        &#125;,  </span><br><span class="line">   peak:<span class="function"><span class="keyword">function</span> <span class="title">peak</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.top<span class="number">-1</span>];<span class="comment">//返回栈顶元素  </span></span><br><span class="line">        &#125;,  </span><br><span class="line">   pop:<span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[--<span class="keyword">this</span>.top];<span class="comment">//返回栈顶元素并将top-1  </span></span><br><span class="line">       &#125;,  </span><br><span class="line">   clear:<span class="function"><span class="keyword">function</span> <span class="title">clear</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">           <span class="keyword">this</span>.top = <span class="number">0</span>;<span class="comment">//将top归0  </span></span><br><span class="line">         &#125;,  </span><br><span class="line">   length:<span class="function"><span class="keyword">function</span> <span class="title">length</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.top;<span class="comment">//返回栈内的元素个数  </span></span><br><span class="line">          &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//测试：</span></span><br><span class="line"><span class="keyword">var</span> lk=<span class="keyword">new</span> Stack();  </span><br><span class="line">lk.push(<span class="string">"likeke"</span>);  </span><br><span class="line">lk.push(<span class="string">"zhangsan"</span>);  </span><br><span class="line">lk.push(<span class="string">"wangwu"</span>);   </span><br><span class="line">lk.length();<span class="comment">//3 </span></span><br><span class="line"><span class="built_in">console</span>.log(lk.peak()); </span><br><span class="line">lk.pop();<span class="comment">//"wangwu"  </span></span><br><span class="line">lk.clear();  </span><br><span class="line">lk.length();<span class="comment">//0</span></span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="交换排序和递归–平均复杂度O-nlog2n"><a href="#交换排序和递归–平均复杂度O-nlog2n" class="headerlink" title="交换排序和递归–平均复杂度O(nlog2n)"></a>交换排序和递归–平均复杂度O(nlog2n)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">arr5=[<span class="number">49</span>,<span class="number">38</span>,<span class="number">65</span>,<span class="number">97</span>,<span class="number">76</span>,<span class="number">13</span>,<span class="number">27</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr,l,r</span>)</span>&#123;<span class="comment">//对从arr[l]到arr[r]的元素进行排序</span></span><br><span class="line">	<span class="keyword">var</span> temp,i=l,j=r;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">		temp=arr[i];</span><br><span class="line">		<span class="keyword">while</span>(i!=j)&#123;</span><br><span class="line">			<span class="keyword">while</span>(i&lt;j&amp;&amp;arr[j]&gt;temp)&#123;<span class="comment">//从右往左扫描到一个小于temp的元素</span></span><br><span class="line">				j--;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">				arr[i]=arr[j];<span class="comment">//把j的元素放在i的位置上（temp的左边）</span></span><br><span class="line">				i++;<span class="comment">//i右移一位</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">while</span>(i&lt;j&amp;&amp;arr[i]&lt;temp)&#123;<span class="comment">//从左往右扫描找到一个大于temp的元素</span></span><br><span class="line">				i++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">				arr[j]=arr[i];<span class="comment">//把i的元素放在j的位置上(temp的右边)</span></span><br><span class="line">				j--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		arr[i]=temp;<span class="comment">//将temp放在最终位置</span></span><br><span class="line">		quickSort(arr,l,i<span class="number">-1</span>);<span class="comment">//递归地对temp左边的元素进行排序</span></span><br><span class="line">		quickSort(arr,i+<span class="number">1</span>,r);<span class="comment">//递归地对temp右边的元素进行排序</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">quickSort(arr5,<span class="number">0</span>,<span class="number">6</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr5);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术分享/" rel="tag"># 技术分享</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/08/CSS外部字体引入并实现压缩及自动化/" rel="next" title="CSS外部字体引入、压缩、自动化">
+                <i class="fa fa-chevron-left"></i> CSS外部字体引入、压缩、自动化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="xpsilvester" />
+            
+              <p class="site-author-name" itemprop="name">xpsilvester</p>
+              <p class="site-description motion-element" itemprop="description">Web开发工程师</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xpsilvester" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xpsilvester@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级算法"><span class="nav-number">1.</span> <span class="nav-text">初级算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性查找-时间复杂度O-n-–相当于算法界中的HelloWorld"><span class="nav-number">1.1.</span> <span class="nav-text">线性查找-时间复杂度O(n)–相当于算法界中的HelloWorld</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找"><span class="nav-number">2.</span> <span class="nav-text">二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#又称折半查找-适用于已排好序的线性结构-时间复杂度O-logN"><span class="nav-number">2.1.</span> <span class="nav-text">(又称折半查找) - 适用于已排好序的线性结构 - 时间复杂度O(logN)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">3.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度O-n-2"><span class="nav-number">3.1.</span> <span class="nav-text">时间复杂度O(n^2)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">4.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度O-n-2-1"><span class="nav-number">4.1.</span> <span class="nav-text">时间复杂度O(n^2)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入算法"><span class="nav-number">5.</span> <span class="nav-text">插入算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度O-n-2-2"><span class="nav-number">5.1.</span> <span class="nav-text">时间复杂度O(n^2)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串反转"><span class="nav-number">6.</span> <span class="nav-text">字符串反转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度O-logN"><span class="nav-number">6.1.</span> <span class="nav-text">时间复杂度O(logN)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计一个基于对象的单链表"><span class="nav-number">7.</span> <span class="nav-text">设计一个基于对象的单链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（双链表类似）"><span class="nav-number">7.1.</span> <span class="nav-text">（双链表类似）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用数组实现的队列"><span class="nav-number">8.</span> <span class="nav-text">用数组实现的队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用数组中的push和shift方法可以使队列的实现显得非常简单"><span class="nav-number">8.1.</span> <span class="nav-text">利用数组中的push和shift方法可以使队列的实现显得非常简单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从定义一个Queue构造函数开始实现队列"><span class="nav-number">9.</span> <span class="nav-text">从定义一个Queue构造函数开始实现队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈的实现"><span class="nav-number">10.</span> <span class="nav-text">栈的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从定义一个stack构造函数开始"><span class="nav-number">10.1.</span> <span class="nav-text">从定义一个stack构造函数开始</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">11.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交换排序和递归–平均复杂度O-nlog2n"><span class="nav-number">11.1.</span> <span class="nav-text">交换排序和递归–平均复杂度O(nlog2n)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xpsilvester</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'dcStXgJ400h0ziWkaV8Aha90-gzGzoHsz',
+        appKey: 'v5V7qkqEtJHd8p69lh0k3zTM',
+        placeholder: '请开始你的表演吧！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-1" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
+     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 0; pointer-events: none;" ></canvas> 
+     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+     <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+</html>
