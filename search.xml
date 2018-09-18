@@ -2,6 +2,17 @@
 <search>
   <entry>
     <title><![CDATA[电商类微信小程序 仿小米商城]]></title>
+    <url>%2F2018%2F09%2F18%2FVueProject%2F</url>
+    <content type="text"><![CDATA[最近用Vue做了关于电商类的项目，以下就是修改过的demo项目源码地址：https://github.com/xpsilvester/Project/tree/master/Vue/Shop欢迎大家踊跃 提出建议 点个Star或者Fork支持一下~一、首页src/pages/Home.vue – 实现基本布局，轮播组件, 路由切换 二、产品分类页src/pages/Category.vue – 实现分类tag随着上下滑动而变化 三、产品详情页src/pages/Detail.vue – 实现轮播，底部加入购物车，专题图片展示 四、购物车src/pages/Cart.vue – 实现全选，取消，单选，清空购物车按钮功能 五、搜索页src/pages/Search.vue – 搜索功能暂未实现 六、关于我src/pages/About.vue – 基本页面布局 七、后台相关接口实现暂时使用模拟数据 八、页面动图演示]]></content>
+      <categories>
+        <category>技术分享</category>
+      </categories>
+      <tags>
+        <tag>技术分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[电商类微信小程序 仿小米商城]]></title>
     <url>%2F2018%2F05%2F16%2FWechatApp%2F</url>
     <content type="text"><![CDATA[最近做了关于电商类微信小程序项目，以下就是修改过的demo项目源码地址：https://github.com/xpsilvester/Project/tree/master/WeChatApp欢迎大家踊跃 提出建议 点个Star或者Fork支持一下~留言地址：https://www.xpsilvester.com/2018/05/16/WechatApp/一、首页pages/index/index – 实现基本布局，分类筛选 二、产品列表页pages/products/list/list – 实现分类接受参数，tag标签切换，相关分类排序 三、产品详情页pages/products/detail/detail – 实现swiper轮播，底部加入购物车，立即购买按钮实现，专题图片展示 四、购物车pages/cart/cart – 实现全选，取消，单选，立即购买，清空购物车按钮功能实现 五、订单列表pages/order/list/list – 基本和产品列表一样六、关于我pages/about/about – 获取用户头像，openid，基本布局 七、支付接口调用pages/order/pay/pay – 支付功能实现 八、后台相关接口实现待传 九、小程序动图演示]]></content>
       <categories>
