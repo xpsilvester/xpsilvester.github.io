@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[电商类微信小程序 仿小米商城]]></title>
+    <title><![CDATA[Vue电商项目]]></title>
     <url>%2F2018%2F09%2F18%2FVueProject%2F</url>
-    <content type="text"><![CDATA[最近用Vue做了关于电商类的项目，以下就是修改过的demo项目源码地址：https://github.com/xpsilvester/Project/tree/master/Vue/Shop欢迎大家踊跃 提出建议 点个Star或者Fork支持一下~一、首页src/pages/Home.vue – 实现基本布局，轮播组件, 路由切换 二、产品分类页src/pages/Category.vue – 实现分类tag随着上下滑动而变化 三、产品详情页src/pages/Detail.vue – 实现轮播，底部加入购物车，专题图片展示 四、购物车src/pages/Cart.vue – 实现全选，取消，单选，清空购物车按钮功能 五、搜索页src/pages/Search.vue – 搜索功能暂未实现 六、关于我src/pages/About.vue – 基本页面布局 七、后台相关接口实现暂时使用模拟数据 八、页面动图演示]]></content>
+    <content type="text"><![CDATA[最近用Vue做了关于电商类的项目，以下就是修改过的demo项目源码地址：https://github.com/xpsilvester/Project/tree/master/Vue/Shop欢迎大家踊跃 提出建议 点个Star或者Fork支持一下~一、首页src/pages/Home.vue – 实现基本布局，轮播组件, 路由切换 二、产品分类页src/pages/Category.vue – 实现分类tag随着上下滑动而变化 三、产品详情页src/pages/Detail.vue – 实现轮播，底部加入购物车，专题图片展示 四、购物车src/pages/Cart.vue – 实现全选，取消，单选，清空购物车按钮功能，使用Vuex实现购物车加减计算 五、搜索页src/pages/Search.vue – 搜索功能暂未实现 六、关于我src/pages/About.vue – 基本页面布局 七、后台相关接口实现暂时使用模拟数据 八、页面动图演示]]></content>
       <categories>
         <category>技术分享</category>
       </categories>
