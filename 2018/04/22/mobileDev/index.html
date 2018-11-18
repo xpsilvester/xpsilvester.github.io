@@ -96,7 +96,7 @@
 <meta property="og:description" content="一、移动web开发特点1.跑在手机端的页面（H5页面）2.跨平台（IOS和安卓）3.基于webview（可以看做是一个浏览器）4.告别IE，拥抱webkit5.更高的适配和性能要求 二、常见移动web适配方法PC： 960px/1000px居中 盒子模型，定高，定宽 Display:inline-block  移动端： 定高，宽度百分比 flex Media Query（媒体查询） 123456@">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/xpsilvester/Project/master/Web/WebMoblie/imgs/1524377424.png">
-<meta property="og:updated_time" content="2018-04-22T06:18:22.931Z">
+<meta property="og:updated_time" content="2018-11-18T02:35:40.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动web开发与适配">
 <meta name="twitter:description" content="一、移动web开发特点1.跑在手机端的页面（H5页面）2.跨平台（IOS和安卓）3.基于webview（可以看做是一个浏览器）4.告别IE，拥抱webkit5.更高的适配和性能要求 二、常见移动web适配方法PC： 960px/1000px居中 盒子模型，定高，定宽 Display:inline-block  移动端： 定高，宽度百分比 flex Media Query（媒体查询） 123456@">
@@ -465,7 +465,8 @@
 </ul>
 <h4 id="五、rem结合sass使用"><a href="#五、rem结合sass使用" class="headerlink" title="五、rem结合sass使用"></a>五、rem结合sass使用</h4><p>让sass自动根据px值转换成相应的rem值<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">function</span> px2rem($px)&#123;</span><br><span class="line">    $rem:37.5px;</span><br><span class="line">    @<span class="keyword">return</span> ($px/$rem) + rem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.demo</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="built_in">px2rem</span>(75px);</span><br><span class="line">    <span class="attribute">height</span>:<span class="built_in">px2rem</span>(37.5px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>编译结果：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.demo</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">heigth</span>:<span class="number">1rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="六、H5移动页面实战"><a href="#六、H5移动页面实战" class="headerlink" title="六、H5移动页面实战"></a>六、H5移动页面实战</h4><p>演示地址：<a href="/demo/WebMoblie/index.html">H5页面Demo</a> 请用移动端调试<br>Github项目地址：<a href="https://github.com/xpsilvester/Project/tree/master/Web/WebMoblie" target="_blank" rel="noopener">移动适配</a></p>
+<h4 id="六、H5移动页面实战"><a href="#六、H5移动页面实战" class="headerlink" title="六、H5移动页面实战"></a>六、H5移动页面实战</h4><p>Github项目地址：<a href="https://github.com/xpsilvester/Project/tree/master/Web/WebMoblie" target="_blank" rel="noopener">移动适配</a></p>
+<p>演示地址：</p>
 <p><img src="https://raw.githubusercontent.com/xpsilvester/Project/master/Web/WebMoblie/imgs/1524377424.png" alt="H5页面Demo"></p>
 <p>可以直接下载zip,或者git clone下来，最好再点个Star或者Fork支持一下~</p>
 <p>打包编译：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install #下载依赖包</span><br><span class="line">webpack #编译</span><br></pre></td></tr></table></figure></p>
