@@ -6,11 +6,153 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="../static/css/common.min.css">
     <link type="text/css" rel="stylesheet" href="../static/css/index.min.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/swiper.min.css">
     <script src="../static/js/jquery-1.12.3.min.js"></script>
+    <script src="../static/js/flexible.min.js"></script>
+    <script src="../static/js/swiper.min.js"></script>
+    <script src="../static/js/common.min.js"></script>
     <script src="../static/js/index.min.js"></script>
-    <title>首页</title>
+    <script>
+        //获取顶部的球
+        let getThemeAjax = () => {
+            $.ajax({
+                url: "test.json",//后端链接
+                type: "post",
+                data: {},
+                dataType: "json",
+                success: function(data){
+                    setTheme(data.theme,data.link);//执行设置球的样式(theme为enroll,upload,invitation,link为跳转的链接)
+                    //如果不是enroll,去掉底部报名按钮
+                    if(data.theme != "enroll"){
+                        $('.enroll-below').addClass('not-display');
+                    }
+                    console.log(data);//可修改，success处理
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+
+        $(function(){
+            uploadVideo(0); //动态获取视频时去掉 参数为正在学习的站点索引 第一站为0
+
+            //获取视频数据（如果不动态获取，可直接在html标签中添加）
+            $.ajax({
+                url: 'xxxxx',
+                type: 'get',
+                dataType: 'json',
+                data: {  },//数据
+                success: function (list) {
+                    if(list != null){
+                        var videoList ="";
+                        for(var i=0;i<list.length;i++){
+                            //假设：list[i].id 视频id 
+                            //list[i].video 视频url , list[i].videoImg 视频略缩图， list[i].intro 视频简介 
+                            videoList += `
+                            <div class="swiper-slide" data-id="`+ list[i].id +`">
+                                <div class="learning not-display"></div>
+                                <video class="video_pic" src="`+ list[i].video +`" poster="`+ list[i].videoImg +`" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                                <p class="title">第1站 - 参赛指南</p>
+                                <div class="video_play"></div>
+                            </div>
+                            `
+                        }
+                        videoList.length > 0 ? $('.swiper-wrapper').html(videoList):'';
+                    }
+            
+                    //获取当前学习的站点
+                    $.ajax({
+                        url: 'xxxxx',
+                        type: 'get',
+                        dataType: 'json',
+                        data: {  },//数据
+                        success: function (index) {
+                            uploadVideo(index);
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+    <title>中华少年说</title>
 </head>
 <body>
-    
+    <div class="index-container">
+        <div class="header">
+            <img class="header-bg" src="../static/images/index/header.png" />
+            <div class="rule">
+                <img class="rule-img" src="../static/images/activityRule.png" />
+            </div>
+            <div class="action enroll">
+            </div>
+        </div>
+        <div class="host"></div>
+        <div class="small-site">
+            <div class="site-btn1 site-btn active">第1-5站</div>
+            <div class="site-btn2 site-btn">第6-10站</div>
+            <div class="site-btn3 site-btn">第11-17站</div>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" data-id="1">
+                        <div class="learning"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                    <div class="swiper-slide" data-id="2">
+                        <div class="learning not-display"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                    <div class="swiper-slide" data-id="3">
+                        <div class="learning not-display"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                    <div class="swiper-slide" data-id="3">
+                        <div class="learning not-display"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                    <div class="swiper-slide" data-id="3">
+                        <div class="learning not-display"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                    <div class="swiper-slide" data-id="3">
+                        <div class="learning not-display"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                    <div class="swiper-slide" data-id="3">
+                        <div class="learning not-display"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                    <div class="swiper-slide" data-id="3">
+                        <div class="learning not-display"></div>
+                        <video class="video_pic" src="xxx.mp4" poster="../static/images/uploadVideo/video_pic.png" playsinline muted  x5-playsinline="" playsinline="" webkit-playsinline=""></video>
+                        <p class="title">第1站 - 参赛指南</p>
+                        <div class="video_play"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-lr"></div>
+        </div>
+        <div class="star-cheer"></div>
+        <div class="enroll-progress">
+            <a class="enroll-below" href="#"></a>
+        </div>
+        <div class="footer"></div>
+    </div>
+    <iframe id="rule" name="rule" src="rule.html"></iframe>
 </body>
 </html>
