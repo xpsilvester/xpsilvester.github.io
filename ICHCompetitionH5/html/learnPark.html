@@ -61,9 +61,10 @@
             </div>
         </div>
         <!-- 原声音频 -->
-        <audio id="player" style="display:none" controls="controls" autoplay">
-            <source src="xxx.mp3"/>
-         </audio>
+        <audio id="player" style="display:none">
+            <source src="xxx.mp3" type="audio/mpeg">
+                你的浏览器不支持html5的audio标签
+        </audio>
     </div>
     <script>
         //获取标题、子标题、介绍、跟读内容、跟读内容音频地址
@@ -119,7 +120,7 @@
             /**
              * 录音相关按钮点击事件
              */
-
+            var playProInter,flagPlay=0;
             //状态
             //开始状态
             var initial = function(){
@@ -131,12 +132,22 @@
 
             //播放原声
             var playPro = function(){
-                $('#yuko-recordplay-play').css('background-image','url(../static/images/learnPark/voice_play.png)');
+                playProInter = setInterval(function(){
+                    if(flagPlay == 0){
+                        flagPlay = 1;
+                        $('#yuko-recordplay-play').css('background-image','url(../static/images/learnPark/voice_play.png)');
+                    }else{
+                        flagPlay = 0;
+                        $('#yuko-recordplay-play').css('background-image','url(../static/images/learnPark/voice_ready.png)');
+                    }
+                },500);
+                
                 $('#player').get(0).play();
             }
 
             //停止原声
             var pausePro = function(){
+                clearInterval(playProInter);
                 $('#yuko-recordplay-play').css('background-image','url(../static/images/learnPark/voice_ready.png)');
                 $('#player').get(0).pause();
             }
