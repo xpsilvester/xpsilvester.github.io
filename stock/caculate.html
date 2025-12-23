@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>港股打新中签概率及期望计算器（含手续费）</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        .calculator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .input-section, .output-section {
+            padding: 30px;
+        }
+        
+        .input-section {
+            background: #f9fbfd;
+            border-right: 1px solid #eaeef2;
+        }
+        
+        .output-section {
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #1e3c72;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeef2;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #445278;
+        }
+        
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d0d9e6;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #4a72da;
+            box-shadow: 0 0 0 3px rgba(74, 114, 218, 0.1);
+        }
+        
+        .rate-table {
+            margin-top: 25px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eaeef2;
+        }
+        
+        th {
+            background-color: #f1f5fb;
+            font-weight: 600;
+            color: #445278;
+            font-size: 14px;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table-input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #e0e6f0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .btn {
+            background: #4a72da;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn:hover {
+            background: #3a62ca;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 114, 218, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-calculate {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        .btn-add {
+            background: #28a745;
+            margin-top: 10px;
+        }
+        
+        .btn-add:hover {
+            background: #218838;
+        }
+        
+        .btn-delete {
+            background: #dc3545;
+            padding: 6px 10px;
+            font-size: 13px;
+        }
+        
+        .btn-delete:hover {
+            background: #c82333;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #f8fafd 0%, #f0f5fc 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eaeef2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .result-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .result-label {
+            font-size: 16px;
+            color: #6c757d;
+            text-align: center;
+        }
+        
+        .result-details {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #eaeef2;
+        }
+        
+        .detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .cost-breakdown {
+            background: #fff9f0;
+            border-left: 4px solid #ffa726;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .explanation {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f0f7ff;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .explanation h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-section {
+                border-right: none;
+                border-bottom: 1px solid #eaeef2;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>港股打新中签概率及期望计算器（含手续费）</h1>
+            <p class="subtitle">精确计算港股打新中签概率、期望收益及净收益（已扣除手续费），助力您的投资决策</p>
+        </header>
+        
+        <div class="calculator">
+            <div class="input-section">
+                <h2>股票信息输入</h2>
+                
+                <div class="form-group">
+                    <label for="stockName">股票名称</label>
+                    <input type="text" id="stockName" placeholder="例如：腾讯控股">
+                </div>
+                
+                <div class="form-group">
+                    <label for="stockAmount">股票金额 (HKD)</label>
+                    <input type="number" id="stockAmount" placeholder="例如：50000" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expectedIncrease">预计涨幅 (%)</label>
+                    <input type="number" id="expectedIncrease" placeholder="例如：15" min="0" step="0.1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="feeAmount">手续费 (HKD)</label>
+                    <input type="number" id="feeAmount" placeholder="例如：100" min="0" step="0.01">
+                    <small style="color: #6c757d; font-size: 12px;">包含申购费、交易佣金等所有相关费用</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="currentMultiplier">当前申购倍数</label>
+                    <input type="number" id="currentMultiplier" placeholder="例如：50" min="1">
+                </div>
+                
+                <div class="rate-table">
+                    <h2>中签率对应关系</h2>
+                    <p style="margin-bottom: 15px; color: #6c757d; font-size: 14px;">添加不同申购倍数对应的中签率数据</p>
+                    
+                    <table id="rateTable">
+                        <thead>
+                            <tr>
+                                <th>申购倍数</th>
+                                <th>中签率 (%)</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="table-input multiplier" placeholder="10" min="1"></td>
+                                <td><input type="number" class="table-input rate" placeholder="25.5" min="0" max="100" step="0.1"></td>
+                                <td><button class="btn btn-delete">删除</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="number" class="table-input multiplier" placeholder="30" min="1"></td>
+                                <td><input type="number" class="table-input rate" placeholder="15.2" min="0" max="100" step="0.1"></td>
+                                <td><button class="btn btn-delete">删除</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <button class="btn btn-add" id="addRow">+ 添加数据行</button>
+                </div>
+                
+                <button class="btn btn-calculate" id="calculate">计算中签概率及期望</button>
+            </div>
+            
+            <div class="output-section">
+                <h2>计算结果</h2>
+                
+                <div class="result-card">
+                    <div class="result-label">预计中签率</div>
+                    <div class="result-value" id="winRateResult">--</div>
+                    <div class="result-label">基于当前申购倍数和历史数据</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">期望净收益</div>
+                    <div class="result-value" id="expectedValueResult">--</div>
+                    <div class="result-label">HKD (已扣除手续费)</div>
+                </div>
+                
+                <div class="result-details">
+                    <div class="detail-item">
+                        <span>股票名称</span>
+                        <span id="resultStockName">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>投资金额</span>
+                        <span id="resultStockAmount">-- HKD</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>预计涨幅</span>
+                        <span id="resultIncrease">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>手续费</span>
+                        <span id="resultFee">-- HKD</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>当前申购倍数</span>
+                        <span id="resultMultiplier">--</span>
+                    </div>
+                </div>
+                
+                <div class="cost-breakdown">
+                    <h3 style="color: #1e3c72; margin-bottom: 10px;">收益分解</h3>
+                    <div class="detail-item">
+                        <span>毛期望收益</span>
+                        <span id="grossReturn">-- HKD</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>手续费成本</span>
+                        <span id="feeCost">-- HKD</span>
+                    </div>
+                    <div class="detail-item" style="font-weight: bold; color: #1e3c72;">
+                        <span>净期望收益</span>
+                        <span id="netReturn">-- HKD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="explanation">
+            <h3>计算原理说明</h3>
+            <p>本计算器基于港股打新中签率计算原理，采用线性插值法根据您提供的申购倍数与中签率对应关系数据，估算当前申购倍数下的中签概率。期望收益计算公式为：中签率 × 股票金额 × 预计涨幅 - 手续费。港股打新中签率受申购人数、资金规模和市场热度等多因素影响，本结果仅供参考。实际手续费可能包括申购费、交易佣金、平台使用费等[3,4](@ref)。</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加数据行
+            document.getElementById('addRow').addEventListener('click', function() {
+                const tbody = document.querySelector('#rateTable tbody');
+                const newRow = document.createElement('tr');
+                
+                newRow.innerHTML = `
+                    <td><input type="number" class="table-input multiplier" placeholder="输入倍数" min="1"></td>
+                    <td><input type="number" class="table-input rate" placeholder="输入中签率" min="0" max="100" step="0.1"></td>
+                    <td><button class="btn btn-delete">删除</button></td>
+                `;
+                
+                tbody.appendChild(newRow);
+                
+                // 为新行的删除按钮添加事件
+                newRow.querySelector('.btn-delete').addEventListener('click', function() {
+                    tbody.removeChild(newRow);
+                });
+            });
+            
+            // 为现有的删除按钮添加事件
+            document.querySelectorAll('.btn-delete').forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const tbody = document.querySelector('#rateTable tbody');
+                    if (tbody.children.length > 1) {
+                        tbody.removeChild(row);
+                    } else {
+                        alert('至少需要保留一行数据');
+                    }
+                });
+            });
+            
+            // 计算功能
+            document.getElementById('calculate').addEventListener('click', function() {
+                // 获取基本输入值
+                const stockName = document.getElementById('stockName').value || '未知股票';
+                const stockAmount = parseFloat(document.getElementById('stockAmount').value);
+                const expectedIncrease = parseFloat(document.getElementById('expectedIncrease').value);
+                const feeAmount = parseFloat(document.getElementById('feeAmount').value) || 0;
+                const currentMultiplier = parseFloat(document.getElementById('currentMultiplier').value);
+                
+                // 验证基本输入
+                if (isNaN(stockAmount) || isNaN(expectedIncrease) || isNaN(currentMultiplier)) {
+                    alert('请输入有效的股票金额、预计涨幅和当前申购倍数');
+                    return;
+                }
+                
+                // 获取中签率对应关系数据
+                const points = [];
+                const rows = document.querySelectorAll('#rateTable tbody tr');
+                
+                rows.forEach(row => {
+                    const multiplierInput = row.querySelector('.multiplier');
+                    const rateInput = row.querySelector('.rate');
+                    const multiplier = parseFloat(multiplierInput.value);
+                    const rate = parseFloat(rateInput.value);
+                    
+                    if (!isNaN(multiplier) && !isNaN(rate)) {
+                        points.push({ multiplier, rate });
+                    }
+                });
+                
+                if (points.length === 0) {
+                    alert('请至少输入一组有效的申购倍数和中签率对应关系');
+                    return;
+                }
+                
+                // 按申购倍数排序
+                points.sort((a, b) => a.multiplier - b.multiplier);
+                
+                // 使用线性插值计算当前申购倍数的中签率
+                let winRatePercent;
+                
+                if (currentMultiplier <= points[0].multiplier) {
+                    // 当前倍数小于最小已知倍数，使用最小倍数的中签率
+                    winRatePercent = points[0].rate;
+                } else if (currentMultiplier >= points[points.length - 1].multiplier) {
+                    // 当前倍数大于最大已知倍数，使用最大倍数的中签率
+                    winRatePercent = points[points.length - 1].rate;
+                } else {
+                    // 在当前倍数范围内进行线性插值
+                    for (let i = 0; i < points.length - 1; i++) {
+                        if (currentMultiplier >= points[i].multiplier && currentMultiplier <= points[i+1].multiplier) {
+                            const x = currentMultiplier;
+                            const x0 = points[i].multiplier;
+                            const x1 = points[i+1].multiplier;
+                            const y0 = points[i].rate;
+                            const y1 = points[i+1].rate;
+                            
+                            // 线性插值公式
+                            winRatePercent = y0 + (y1 - y0) * (x - x0) / (x1 - x0);
+                            break;
+                        }
+                    }
+                }
+                
+                // 计算期望收益
+                const winProbability = winRatePercent / 100; // 转换为小数
+                const increaseFactor = expectedIncrease / 100; // 转换为小数
+                const grossExpectedValue = winProbability * stockAmount * increaseFactor;
+                const netExpectedValue = grossExpectedValue - feeAmount;
+                
+                // 显示结果
+                document.getElementById('winRateResult').textContent = winRatePercent.toFixed(2) + '%';
+                document.getElementById('expectedValueResult').textContent = netExpectedValue.toFixed(2);
+                
+                // 更新详细信息
+                document.getElementById('resultStockName').textContent = stockName;
+                document.getElementById('resultStockAmount').textContent = stockAmount.toLocaleString() + ' HKD';
+                document.getElementById('resultIncrease').textContent = expectedIncrease.toFixed(1) + '%';
+                document.getElementById('resultFee').textContent = feeAmount.toLocaleString() + ' HKD';
+                document.getElementById('resultMultiplier').textContent = currentMultiplier;
+                
+                // 更新收益分解
+                document.getElementById('grossReturn').textContent = grossExpectedValue.toFixed(2) + ' HKD';
+                document.getElementById('feeCost').textContent = feeAmount.toLocaleString() + ' HKD';
+                document.getElementById('netReturn').textContent = netExpectedValue.toFixed(2) + ' HKD';
+                
+                // 根据净收益正负设置颜色
+                const netReturnElement = document.getElementById('netReturn');
+                if (netExpectedValue >= 0) {
+                    netReturnElement.style.color = '#28a745';
+                } else {
+                    netReturnElement.style.color = '#dc3545';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
